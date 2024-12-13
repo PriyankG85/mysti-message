@@ -1,0 +1,19 @@
+{
+  "messages": [
+    {
+      "title": "Message from PriyankG",
+      "content": "What's a hidden talent you possess?",
+      "createdAt": "2024-12-01T00:00:00.000Z"
+    },
+    {
+      "title": "Message from Omni",
+      "content": "If you could travel to any place in the world right now, where would you go?",
+      "createdAt": "2024-12-01T00:00:00.000Z"
+    },
+    {
+      "title": "Message from Sandeep",
+      "content": "What's a unique belief or tradition you hold dear?",
+      "createdAt": "2024-12-01T00:00:00.000Z"
+    }
+  ]
+}
