@@ -1,10 +1,11 @@
-import { auth } from "@/auth";
+import { getToken } from "next-auth/jwt";
 
-export default auth((req) => {
+export async function middleware(req: any) {
   const url = req.nextUrl;
+  const token = await getToken({ req, secret: process.env.AUTH_SECRET });
 
   if (
-    req.auth &&
+    token &&
     (url.pathname.startsWith("/signIn") ||
       url.pathname.startsWith("/signUp") ||
       url.pathname === "/" ||
@@ -12,9 +13,9 @@ export default auth((req) => {
   )
     return Response.redirect(new URL("/dashboard", url.origin));
 
-  if (!req.auth && url.pathname.startsWith("/dashboard"))
+  if (!token && url.pathname.startsWith("/dashboard"))
     return Response.redirect(new URL("/signIn", url.origin));
-});
+}
 
 export const config = {
   matcher: ["/signIn", "/signUp", "/", "/dashboard/:path*", "/verify/:path*"],
