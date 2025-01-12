@@ -48,4 +48,4 @@ export const DELETE = auth(async function DELETE(req, { params }: any) {
       { status: 500 }
     );
   }
-});
+}) as any;

@@ -59,7 +59,7 @@ export const POST = auth(async function POST(req) {
       { status: 500 }
     );
   }
-});
+}) as any;
 
 export const GET = auth(async function GET(req) {
   await dbConnect();
@@ -107,4 +107,4 @@ export const GET = auth(async function GET(req) {
       { status: 500 }
     );
   }
-});
+}) as any;
