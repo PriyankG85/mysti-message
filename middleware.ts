@@ -1,6 +1,6 @@
 export async function middleware(req: any) {
   const url = req.nextUrl;
-  const session = req.cookies.get("authjs.session-token").value;
+  const session = req.cookies.get("authjs.session-token");
 
   if (
     session &&
