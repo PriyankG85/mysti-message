@@ -45,6 +45,7 @@ const SignIn = () => {
           : res.error
       );
     } else {
+      console.log(res);
       toast("Signed in successfully");
       router.replace("/dashboard");
     }

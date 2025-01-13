@@ -1,11 +1,9 @@
-import { getToken } from "next-auth/jwt";
-
 export async function middleware(req: any) {
   const url = req.nextUrl;
-  const token = await getToken({ req, secret: process.env.AUTH_SECRET });
+  const session = req.cookies.get("authjs.session-token").value;
 
   if (
-    token &&
+    session &&
     (url.pathname.startsWith("/signIn") ||
       url.pathname.startsWith("/signUp") ||
       url.pathname === "/" ||
@@ -13,7 +11,7 @@ export async function middleware(req: any) {
   )
     return Response.redirect(new URL("/dashboard", url.origin));
 
-  if (!token && url.pathname.startsWith("/dashboard"))
+  if (!session && url.pathname.startsWith("/dashboard"))
     return Response.redirect(new URL("/signIn", url.origin));
 }
 
